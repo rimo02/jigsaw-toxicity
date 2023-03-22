@@ -25,7 +25,7 @@ async def get_preds(request:Request,message:str=Form(...)):
         if value==1:
             result[key]=value
     result=list(result.keys())
-    context={'request':request,'msg':result}
+    context={'request':request,'msg':message,'output':result}
     return templates.TemplateResponse('index.html',context)
 
 
