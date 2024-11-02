@@ -4,32 +4,37 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Toxic Comment classifier</title>
+    <title>Toxic Comment Classifier</title>
     <link rel="stylesheet" href="../static/style.css" />
   </head>
-  <body>
+  <body style="background: linear-gradient(to right, #e66465, #9198e5)">
     <center>
       <div class="container">
-        <h1>
-          <p style="color: aliceblue">Enter your comment!</p>
-        </h1>
-        <form id="myform" action="/upload" method="post" enctype="multipart/form-data">
+        <h1 style="color: aliceblue">Enter your comment!</h1>
+        <form
+          id="myform"
+          action="/upload"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label for="message" style="color: aliceblue">Comment:</label>
           <br />
           <textarea
             name="message"
-            id=""
+            id="message"
             cols="80"
             rows="14"
             class="textbx"
+            title="Enter your comment here"
+            placeholder="Type your comment here..."
           ></textarea>
           <br />
           <br />
-          <input type="submit" value="check" />
+          <input type="submit" value="Check" />
           <br />
           <h3 style="color: azure">
-            <p>Your Input : {{msg}}</p>
-            <p>Output</p>
-            <p>{{output}}</p>
+            Your Input: {{msg}} <br />
+            Output: {{output}}
           </h3>
         </form>
       </div>

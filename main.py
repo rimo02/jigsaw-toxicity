@@ -20,11 +20,8 @@ async def get_preds(request:Request,message:str=Form(...)):
     pred=make_prediction(message)
     list1=['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']
     out=dict(zip(list1,pred))
-    result={}
-    for key,value in out.items():
-        if value==1:
-            result[key]=value
-    result=list(result.keys())
+    result = [category for category, flag in out.items() if flag == 1]
+    print(result)
     context={'request':request,'msg':message,'output':result}
     return templates.TemplateResponse('index.html',context)
 

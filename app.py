@@ -65,19 +65,17 @@ class DistilClass(nn.Module):
     def epoch_end(self,epoch,result):
         print("Epoch [{}] ,Train_Loss:{:.4f}, Val_Loss:{:.4f}".format(epoch,result['train_loss'],result['val_loss']))
 
-def load_checkpoint(filepath):
-      model=DistilClass().to(device)
-      model.load_state_dict(torch.load(filepath,map_location='cpu'))
-      return model
 
-@torch.no_grad()
+model = DistilClass().to(device)
+model.load_state_dict(torch.load('./model.pt', map_location=device))
+model.eval()
+
 def make_prediction(sentence):
   inputs=tokenizer.encode_plus(sentence)
   id=torch.tensor(inputs['input_ids'],dtype=torch.int).to(device)
   mask=torch.tensor(inputs['attention_mask'],dtype=torch.float).to(device)
   id=id.unsqueeze(0)
   mask=mask.unsqueeze(0)
-  model=load_checkpoint('./model.pt')
   out=model(id,mask)
   output=torch.sigmoid(out)
   output=(output[0]>0.55).int()
