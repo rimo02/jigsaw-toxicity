@@ -13,6 +13,9 @@ This project aims to build a multi-headed model for detecting various types of t
 
 Utilizing the DistilBERT model, this approach fine-tunes the model on a dataset of comments from Wikipedia's talk page edits. The model is then deployed using FastAPI, allowing for easy interaction and testing of its capabilities.
 
+# Sample
+![image](https://github.com/user-attachments/assets/cf0a3539-dc01-4816-9a0c-6d62e671ea21)
+
 
 ---
 ### Note
